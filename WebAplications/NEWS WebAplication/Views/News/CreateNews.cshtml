@@ -1,0 +1,141 @@
+﻿@model NEWS_WebAplication.Models.NewsViewModel
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
+    <title>Crear News</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            
+        }
+
+        
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="file"],
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+            .btn-primary:hover {
+                background-color: #0056b3;
+            }
+
+        .text-danger {
+            color: #dc3545;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Create News</h1>
+        <hr>
+        <form method="POST" enctype="multipart/form-data" asp-action="CreateNews" >
+			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-row">
+                <div class="form-group">
+				    <label for="imageFile">Image</label>
+				    <input type="file" id="imageFile" name="imageFile" class="form-control-file">
+			    </div>
+
+             
+                <div class="form-group">
+				    <label asp-for="Author" class="control-label"></label>
+                    <input asp-for="Author" class="control-label" placeholder="Author" required />
+				    <span asp-validation-for="Author" class="text-danger"></span>
+			    </div>
+
+                <div class="form-group">
+				    <label asp-for="Title" class="control-label"></label>
+                    <input asp-for="Title" class="control-label" placeholder="Title" required />
+				    <span asp-validation-for="Title" class="text-danger"></span>
+			    </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+				    <label asp-for="Description" class="control-label"></label>
+                    <textarea asp-for="Description" class="form-control" placeholder="Description" required></textarea>
+				    <span asp-validation-for="Description" class="text-danger"></span>
+			    </div>
+
+			    <div class="form-group">
+				    <label asp-for="Content" class="control-label"></label>
+                    <textarea asp-for="Content" class="form-control" placeholder="Content" required></textarea>
+				    <span asp-validation-for="Content" class="text-danger"></span>
+			    </div>
+
+			    <div class="form-group">
+				    <label asp-for="PublishedAt" class="control-label"></label>
+                    <input asp-for="PublishedAt" class="form-control" placeholder="PublishedAt" required />
+				    <span asp-validation-for="PublishedAt" class="text-danger"></span>
+			    </div>
+            </div>
+
+
+            <div class="form-row">
+			    <div class="form-group">
+				    <label asp-for="CategoryId" class="control-label"></label>
+                    <select asp-for="CategoryId" class="control-label" asp-items="ViewBag.Categories" required></select>
+				    <span asp-validation-for="CategoryId" class="text-danger"></span>
+			    </div>
+
+			    <div class="form-group">
+				    <label asp-for="CountryId" class="control-label"></label>
+                    <select asp-for="CountryId" class="control-label" asp-items="ViewBag.Countries" required></select>
+				    <span asp-validation-for="CountryId" class="text-danger"></span>
+			    </div>
+
+            </div>
+
+            <div class="col-12">
+				<input type="submit" value="Crear" class="btn btn-primary" />
+			</div>
+
+
+		</form>
+    </div>
+
+	<script src="~/lib/jquery/dist/jquery.min.js"></script>
+	<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+

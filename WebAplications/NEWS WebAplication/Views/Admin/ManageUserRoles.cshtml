@@ -1,0 +1,21 @@
+﻿@* @model NEWS_WebAplication.Models.Account.ManageUserRolesViewModel
+
+@{
+    ViewData["Title"] = "ManageUserRoles";
+}
+
+<h2>Manage User Roles</h2>
+
+<form asp-controller="Admin" asp-action="ManageUserRoles" method="post">
+    @foreach (var user in Model.Users)
+    {
+        <h4>@user.DisplayName</h4>
+        <input type="hidden" asp-for="SelectedUserId" value="@user.UserId" />
+
+        <select asp-for="SelectedRoleIds" asp-items="@(new SelectList(Model.Roles, "RoleId", "Name"))" multiple></select>
+        <br />
+    }
+
+    <button type="submit">Actualizar Roles</button>
+</form> *@
+

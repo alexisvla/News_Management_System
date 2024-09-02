@@ -1,0 +1,67 @@
+﻿@model IEnumerable<NewsViewModel>
+
+
+@foreach (var AllNews in Model)
+{
+    <div class="news-container">
+        <div class="news-card">
+            @if (AllNews.ImagePath != null && AllNews.ImagePath.Length > 0)
+            {
+                <img src="data:image/jpeg;base64,@Convert.ToBase64String(AllNews.ImagePath)" class="news-image" alt="Image">
+            }
+            <h5 class="news-title">@AllNews.Title</h5>
+            <p class="news-description">@AllNews.Description</p>
+            <p class="news-content">@AllNews.Content</p>
+            <p class="news-published">Publicado el: @AllNews.PublishedAt</p>
+        </div>
+    </div>
+}
+
+<style>
+
+    body {
+        background-image: url('https://img.freepik.com/free-vector/global-technology-earth-news-bulletin-background_1017-33687.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+    .news-container {
+        max-width: 2500px;
+        margin: 0 auto;
+    }
+
+    .news-card {
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        padding: 10px;
+        margin-bottom: 20px;
+        background-color: #f9f9f9;
+    }
+
+    .news-title {
+        font-size: 54px;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    .news-description {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+
+    .news-content {
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+
+    .news-image {
+        max-width: 100%;
+        border-radius: 10px;
+        margin-bottom: 10px;
+    }
+
+    .news-published {
+        font-size: 14px;
+        color: #888;
+    }
+</style>

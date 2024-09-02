@@ -1,0 +1,85 @@
+﻿@model IEnumerable<CountryViewModel>
+
+<h1>Administrar Countries</h1>
+
+<div class="btn-group btn-group-sm">
+    <a asp-action="CreateCountries" class="btn btn-success">+</a>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var AllCountry in Model)
+        {
+            <tr>
+                <td>@AllCountry.CountryId</td>
+                <td>@AllCountry.Name</td>
+                <td class="btn-group btn-group-sm">
+                    <div>
+                        <a asp-action="EditCountries" asp-route-id="@AllCountry.CountryId" class="btn btn-success">Edit</a>
+                    </div>
+                </td>
+                <td class="btn-group btn-group-sm">
+                    <div>
+                        <a asp-action="DeleteCountries" asp-route-id="@AllCountry.CountryId" class="btn btn-success">Eliminar</a>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-image: url('https://media.istockphoto.com/id/1407271745/photo/gray-background.webp?b=1&s=170667a&w=0&k=20&c=aAk4qTe2O_TAt77Nx9ROXTXyGTgXN0FFn1eep4RkvC0=');
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+    h1 {
+        margin-bottom: 20px;
+        color: #333;
+        font-weight: bold;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        border-spacing: 0;
+    }
+
+    th, td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    th {
+        background-color: #f2f2f2;
+        font-weight: bold;
+    }
+
+    td.btn-group {
+        white-space: nowrap;
+    }
+
+    .btn {
+        padding: 5px 10px;
+        font-size: 14px;
+    }
+
+    .btn-success {
+        background-color: #28a745;
+        border-color: #28a745;
+    }
+
+        .btn-success:hover {
+            background-color: #218838;
+        }
+</style>

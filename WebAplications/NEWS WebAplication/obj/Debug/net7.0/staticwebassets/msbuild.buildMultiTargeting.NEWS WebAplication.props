@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\NEWS WebAplication.props" />
+</Project>

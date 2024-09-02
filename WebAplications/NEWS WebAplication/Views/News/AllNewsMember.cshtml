@@ -1,0 +1,40 @@
+﻿@model IEnumerable<NewsViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+
+<div class="row">
+    @foreach (var AllNews in Model)
+    {
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                @if (AllNews.ImagePath != null && AllNews.ImagePath.Length > 0)
+                {
+                    <img src="data:image/jpeg;base64,@Convert.ToBase64String(AllNews.ImagePath)" class="img-rounded" alt="Image">
+                }
+                <div class="card-body">
+                    <h5 class="card-title">@AllNews.Title</h5>
+                    <p class="card-text">@AllNews.Description</p>
+                    <div class="form-group">
+                        <a asp-action="WatchNews" asp-route-id="@AllNews.NewsId" class="btn btn-success">Ver Mas</a>
+                    </div>
+                    @* <p class="card-text">@AllNews.Content</p> *@
+                    <p class="card-text">Publicado el: @AllNews.PublishedAt</p>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<style>
+
+    body {
+        background-image: url('https://img.freepik.com/free-vector/global-technology-earth-news-bulletin-background_1017-33687.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+</style>
